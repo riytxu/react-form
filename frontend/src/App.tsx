@@ -1,5 +1,5 @@
 import { FC, useState, useRef, MutableRefObject } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldProps } from "formik";
 import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import cn from "classnames";
@@ -82,7 +82,7 @@ export const App: FC<{}> = () => {
             </div>
             <div className="form-group__wrapper">
               <Field name="number">
-                {({ field, form: { touched, errors } }) => {
+                {({ field, form: { touched, errors } }: FieldProps) => {
                   return (
                     <MaskedInput
                       placeholder="Number"

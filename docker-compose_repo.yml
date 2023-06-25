@@ -4,7 +4,9 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./backend
+      context: git@github.com:riytxu/react-form.git#main
+      ssh: ["default"]
+      dockerfile: Dockerfile_backend
     env_file:
       - .env
     command: "npm run production"
@@ -14,7 +16,9 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: ./frontend
+      context: git@github.com:riytxu/react-form.git#main
+      ssh: ["default"]
+      dockerfile: Dockerfile_frontend
       args:
         - REACT_APP_BASE_URL=$REACT_APP_BASE_URL
     env_file:

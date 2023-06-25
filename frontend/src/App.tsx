@@ -22,7 +22,7 @@ export const App: FC<{}> = () => {
 
   const getUsers = (values: IForm) => {
     setLoading(true);
-    fetch("http://localhost:5000/search", {
+    fetch(`${process.env.REACT_APP_BASE_URL}/search`, {
       method: "POST",
       headers: { "content-type": "application/json;charset=UTF-8" },
       body: JSON.stringify(values, null, 2),

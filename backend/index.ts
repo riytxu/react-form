@@ -4,12 +4,12 @@ import { IUser } from "./types";
 import { data } from "./data";
 
 const app = express();
-const PORT = 5000;
+const PORT = Number(process.env.BACKEND_PORT);
 
 app.use(json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.FRONTEND_URL,
   })
 );
 
@@ -21,9 +21,9 @@ app.post("/search", (req: Request, res: Response) => {
       return user.email === email && (!number || user.number === number);
     });
     res.json(filtredData);
-  }, 5000);
+  }, Number(process.env.REQEST_DELAY));
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend work at http://localhost:${PORT}`);
+  console.log(`Backend work at port: ${PORT}`);
 });
